@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+
+import axios from 'axios';
+
+import EmployeeList from './components/EmployeeList';
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+state = {
+    // id: '',
+    employees: []
+}
+
+componentDidMount(){
+    axios.get('http://dummy.restapiexample.com/api/v1/employees')
+    .then(res => {
+        console.log(res);
+        this.setState({employees: res.data})
+    });
+}
+
+
+render(){
+  return(
+      <EmployeeList employees={this.state.employees}></EmployeeList>
+  )
+}
+
 }
 
 export default App;
