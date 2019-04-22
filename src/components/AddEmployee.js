@@ -8,35 +8,39 @@ class AddEmployee extends Component {
     age: ''
   };
 
-  handleChange = e => {
+  handleChangeName = e => {
     this.setState({
-      employeeName: e.target.value,
-      employeeSalary: e.target.value,
-      employeeAge: e.target.value
+      name: e.target.value
     });
   };
 
-  submitForm = e => {
+  handleChangeSalary = e => {
+    this.setState({
+      salary: e.target.value
+    });
+  };
+
+  handleChangeAge = e => {
+    this.setState({
+      age: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
     e.preventDefault();
 
-    const employee = {
-      name: this.state.employeeName,
-      salary: this.state.employeeSalary,
-      age: this.state.employeeAge
+    const data = {
+      name: this.state.name,
+      salary: this.state.salary,
+      age: this.state.age
     };
 
-    // const data = {
-    //   name: 'test',
-    //   salary: '30000',
-    //   age: '22'
-    // };
-
     axios
-      .post('http://dummy.restapiexample.com/api/v1/create', employee)
+      .post('http://dummy.restapiexample.com/api/v1/create', data)
       .then(res => {
-        console.log(res);
-        // this.setState({ data: res.data });
+        console.log('Successfully Created!');
         console.log(res.data);
+        window.location.replace('/');
       });
   };
 
@@ -45,35 +49,33 @@ class AddEmployee extends Component {
       <div className='form'>
         <h2>Add new Employee</h2>
         <br />
-        <form onSubmit={this.submitForm}>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeholder='enter employee name'
-            className=''
             type='text'
-            name='employeeName'
-            onChange={this.handleChange}
+            name='name'
+            onChange={this.handleChangeName}
           />
           <br />
           <br />
           <input
             placeholder='enter amount of salary'
-            className=''
             type='number'
-            name='employeeSalary'
-            onChange={this.handleChange}
+            name='salary'
+            onChange={this.handleChangeSalary}
           />
           <br />
           <br />
 
           <input
             placeholder='enter employee age'
-            className=''
             type='number'
-            name='employeeAge'
-            onChange={this.handleChange}
+            name='age'
+            onChange={this.handleChangeAge}
           />
           <br />
           <br />
+
           <button type='submit'>Submit</button>
         </form>
       </div>

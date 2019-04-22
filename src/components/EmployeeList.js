@@ -35,6 +35,21 @@ class EmployeeList extends Component {
     });
   }
 
+  removeEmployee(id) {
+    try {
+      axios
+        .delete(`http://dummy.restapiexample.com/api/v1/delete/${id}`)
+        .then(res => {
+          console.log('Successfully Deleted!');
+          console.log(res);
+          window.location.reload();
+        });
+    } catch (err) {
+      console.log('Error!');
+      console.log(err.res);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +76,15 @@ class EmployeeList extends Component {
                 <td className='cell'>{employee.employee_age}</td>
                 <td className='cell'>
                   <button className='editBtn'> Edit </button>{' '}
-                  <button className='deleteBtn'> Remove </button>
+                  <button
+                    className='deleteBtn'
+                    onClick={() => {
+                      this.removeEmployee(employee.id);
+                    }}
+                  >
+                    {' '}
+                    Remove{' '}
+                  </button>
                 </td>
               </tr>
             ))}
