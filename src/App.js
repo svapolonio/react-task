@@ -25,8 +25,8 @@ class App extends Component {
           &nbsp;&nbsp;&nbsp;
           <br />
           <br />
-          <Route path='/' exact component={EmployeeList} />
           <Route path='/create' component={AddEmployee} />
+          <Route path='/' exact component={EmployeeList} />
         </BrowserRouter>
 
         {/* <AddEmployee /> */}

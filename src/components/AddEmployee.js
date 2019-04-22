@@ -42,36 +42,41 @@ class AddEmployee extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submitForm}>
-        Name:{' '}
-        <input
-          className='cell'
-          type='text'
-          name='employeeName'
-          onChange={this.handleChange}
-        />
+      <div className='form'>
+        <h2>Add new Employee</h2>
         <br />
-        <br />
-        Salary:{' '}
-        <input
-          className='cell'
-          type='number'
-          name='employeeSalary'
-          onChange={this.handleChange}
-        />
-        <br />
-        <br />
-        Age:{' '}
-        <input
-          className='cell'
-          type='number'
-          name='employeeAge'
-          onChange={this.handleChange}
-        />
-        <br />
-        <br />
-        <button type='submit'>Submit</button>
-      </form>
+        <form onSubmit={this.submitForm}>
+          <input
+            placeholder='enter employee name'
+            className=''
+            type='text'
+            name='employeeName'
+            onChange={this.handleChange}
+          />
+          <br />
+          <br />
+          <input
+            placeholder='enter amount of salary'
+            className=''
+            type='number'
+            name='employeeSalary'
+            onChange={this.handleChange}
+          />
+          <br />
+          <br />
+
+          <input
+            placeholder='enter employee age'
+            className=''
+            type='number'
+            name='employeeAge'
+            onChange={this.handleChange}
+          />
+          <br />
+          <br />
+          <button type='submit'>Submit</button>
+        </form>
+      </div>
     );
   }
 }
