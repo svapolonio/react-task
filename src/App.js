@@ -9,6 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>CRUD APP</h1>
         <BrowserRouter>
           <NavLink activeStyle={{ fontWeight: 'bold', color: 'black' }} to='/'>
             {' '}
@@ -23,7 +24,6 @@ class App extends Component {
             Add Employee
           </NavLink>{' '}
           &nbsp;&nbsp;&nbsp;
-          <br />
           <br />
           <Route path='/create' component={AddEmployee} />
           <Route path='/' exact component={EmployeeList} />
