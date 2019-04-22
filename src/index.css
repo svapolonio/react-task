@@ -42,8 +42,8 @@ code {
 }
 .row.header {
   font-weight: 900;
-  color: #ffffff;
-  background: #ff8a1d;
+  color: #000000;
+  background: #d4d4d4;
 }
 @media screen and (max-width: 580px) {
   .row {

@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 
-import axios from 'axios';
-
+//Components
 import EmployeeList from './components/EmployeeList';
-
+import AddEmployee from './components/AddEmployee';
 
 class App extends Component {
+  render() {
+    return (
+      <div>
+        <BrowserRouter>
+          <NavLink activeStyle={{ fontWeight: 'bold', color: 'black' }} to='/'>
+            {' '}
+            List of Employee
+          </NavLink>{' '}
+          &nbsp;&nbsp;&nbsp;
+          <NavLink
+            activeStyle={{ fontWeight: 'bold', color: 'black' }}
+            to='/create'
+          >
+            {' '}
+            Add Employee
+          </NavLink>{' '}
+          &nbsp;&nbsp;&nbsp;
+          <br />
+          <br />
+          <Route path='/' exact component={EmployeeList} />
+          <Route path='/create' component={AddEmployee} />
+        </BrowserRouter>
 
-state = {
-    // id: '',
-    employees: []
-}
-
-componentDidMount(){
-    axios.get('http://dummy.restapiexample.com/api/v1/employees')
-    .then(res => {
-        console.log(res);
-        this.setState({employees: res.data})
-    });
-}
-
-
-render(){
-  return(
-      <EmployeeList employees={this.state.employees}></EmployeeList>
-  )
-}
-
+        {/* <AddEmployee /> */}
+        {/* <EmployeeList /> */}
+        {/* <EmployeeList employees={this.state.employees} /> */}
+      </div>
+    );
+  }
 }
 
 export default App;
